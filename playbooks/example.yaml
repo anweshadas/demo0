@@ -1,0 +1,13 @@
+---
+
+- name: Test playbook
+  hosts: localhost
+  tasks:
+    - name: Test newly created module
+      anweshadas.demo0.demo:
+        name: Ansible
+
+    - name: Addtion of numbers
+      anweshadas.demo0.add:
+        number1: 3
+        number2: 4

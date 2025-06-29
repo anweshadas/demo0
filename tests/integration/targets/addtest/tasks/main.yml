@@ -1,0 +1,21 @@
+---
+- name: Test the Hello World filter plugin
+  ansible.builtin.set_fact:
+    msg: "{{ 'ansible-creator' | anweshadas.demo0.sample_filter }}"
+
+- name: Assert that the filter worked
+  ansible.builtin.assert:
+    that:
+      - msg == 'Hello, ansible-creator'
+
+- name: Addition of 2 numbers
+  register: result
+  anweshadas.demo0.add:
+    number1: 1
+    number2: 41
+
+- name: Assert the result
+  ansible.builtin.assert:
+    that:
+    - result is succeeded
+    - result.answer == 42

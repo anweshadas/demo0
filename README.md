@@ -7,9 +7,7 @@ This repository contains the `anweshadas.demo0` Ansible Collection.
 
 ## External requirements
 
-Some modules and plugins require external libraries. Please check the
-requirements for each plugin or module you use in the documentation to find out
-which requirements are needed.
+`typing_extensions` is needed for sucessful run of `pytest_ansible`.
 
 ## Included content
 

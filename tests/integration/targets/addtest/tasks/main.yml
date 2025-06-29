@@ -17,5 +17,5 @@
 - name: Assert the result
   ansible.builtin.assert:
     that:
-    - result is succeeded
-    - result.answer == 42
+      - result is succeeded
+      - result.answer == 42

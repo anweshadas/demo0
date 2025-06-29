@@ -1,6 +1,14 @@
-This should be updated by antsibull-changelog. Do not edit this manually!
+=========================================
+Anweshadas Demo0 Collection Release Notes
+=========================================
 
-See https://github.com/ansible-community/antsibull-changelog/blob/main/docs/changelogs.rst for
-information on how to use antsibull-changelog.
+.. contents:: Topics
 
-Check out ``changelogs/config.yaml`` for its configuration. You need to change at least the ``title`` field in there.
+v0.0.1
+======
+
+New Modules
+-----------
+
+- add - A simple module plugin for Ansible to learn.
+- demo - A demo module plugin for Ansible following the ADT development guide.

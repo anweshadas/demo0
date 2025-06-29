@@ -1,0 +1,12 @@
+ancestor: null
+releases:
+  0.0.1:
+    modules:
+    - description: A simple module plugin for Ansible to learn.
+      name: add
+      namespace: ''
+    - description: A demo module plugin for Ansible following the ADT development
+        guide.
+      name: demo
+      namespace: ''
+    release_date: '2025-06-29'

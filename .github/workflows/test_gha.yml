@@ -47,7 +47,7 @@ jobs:
         run: >-
           gh pr create
           --draft
-          --base test
+          --base main
           --head "${GIT_BRANCH}"
           --title "test commit msg"
           --body "pr body"

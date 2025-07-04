@@ -2,8 +2,8 @@
 name: Testing Gha
 on:
   workflow_dispatch:
-    env:
-      GIT_BRANCH: "testprbranch"
+  pull_request:
+
     types:
     - opened  # default
     - synchronize  # default
@@ -14,6 +14,8 @@ jobs:
   test-pr-creation:
     name: Creates test PR
     runs-on: ubuntu-latest
+    env:
+      GIT_BRANCH: "testprbranch"
     steps:
       - uses: actions/checkout@v4
       - name: Updates README
@@ -25,11 +27,11 @@ jobs:
           ACTOR_NAME="$(curl -s https://api.github.com/users/"${GITHUB_ACTOR}" | jq --raw-output '.name // .login')"
           git config --global user.name "${ACTOR_NAME}"
           git config --global user.email "${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com"
-          
+
       - name: Add README
         run: git add README.md
 
-      - name: Commit 
+      - name: Commit
         run: >-
           git diff-index --quiet HEAD ||
           git commit -m "test commit msg"
@@ -46,7 +48,7 @@ jobs:
           --head "${GIT_BRANCH}"
           --title "test commit msg"
           --body "pr body"
-            
+
       - name: Retrieve the existing PR URL
         id: existing-pr
         env:
@@ -54,7 +56,7 @@ jobs:
         run: >
           echo -n pull_request_url=
           >> "${GITHUB_OUTPUT}"
-    
+
           gh pr view
             --json 'url'
             --jq '.url'
@@ -68,15 +70,15 @@ jobs:
         run: >
           echo -n pull_request_url=
           >> "${GITHUB_OUTPUT}"
-    
+
           echo '${{steps.existing-pr.outputs.pull_request_url}}'
           >> "${GITHUB_OUTPUT}"
-          
+
       - name: Log the pull request details
         run: >-
            echo 'PR URL: ${{ steps.pr.outputs.pull_request_url }}' | tee -a "${GITHUB_STEP_SUMMARY}"
 
-    
+
       - name: Instruct the maintainers to trigger CI by undrafting the PR
         env:
           GITHUB_TOKEN: ${{ github.token }}

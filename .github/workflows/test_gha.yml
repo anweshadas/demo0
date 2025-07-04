@@ -57,15 +57,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: >
-          echo -n pull_request_url=
-          >> "${GITHUB_OUTPUT}"
+          echo -n pull_request_url= >> "${GITHUB_OUTPUT}"
 
           gh pr view
-            --json 'url'
-            --jq '.url'
-            --repo '${{ github.repository }}'
-            '${{ env.GIT_BRANCH }}'
-            >> "${GITHUB_OUTPUT}"
+          --json 'url'
+          --jq '.url'
+          --repo '${{ github.repository }}'
+          '${{ env.GIT_BRANCH }}'
+          >> "${GITHUB_OUTPUT}"
       - name: Select the actual PR URL
         id: pr
         env:

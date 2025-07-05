@@ -6,13 +6,6 @@ on:
       GIT_BRANCH:
         description: The git branch to be worked on
         required: true
-  pull_request:
-
-    types:
-    - opened  # default
-    - synchronize  # default
-    - reopened  # default
-    - ready_for_review  # used in PRs created from GitHub Actions workflows
 
 jobs:
   test-pr-creation:

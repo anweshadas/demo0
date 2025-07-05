@@ -2,6 +2,10 @@
 name: Testing Gha
 on:
   workflow_dispatch:
+    inputs:
+      GIT_BRANCH:
+        description: The git branch to be worked on
+        required: true
   pull_request:
 
     types:
@@ -18,7 +22,7 @@ jobs:
       pull-requests: write
       contents: write
     env:
-      GIT_BRANCH: "testprbranch"
+      GIT_BRANCH: ${{ inputs.GIT_BRANCH }}
     steps:
       - uses: actions/checkout@v4
       - name: Updates README
